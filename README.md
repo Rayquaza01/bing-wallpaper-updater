@@ -2,17 +2,14 @@
 
 Updates wallpaper to the current Bing wallpaper of the day
 
-Currently, only supports Windows (64 bit) and Ubuntu.
+## Python Version
 
-Built on top of https://gist.github.com/Rayquaza01/8fc590d5c4af187e08d92d8f5040004b
+The python version no longer works. `platform.linux_distribution()` is deprecated. Also, the script was checking for Ubuntu instead of gnome for some reason.
 
-## How to use:
+## Bash Version
 
--   Run `bing-wallpaper-updater.py`
--   That's it!
+Running the bash version will download the image to `$XDG_PICTURES_DIR/bing-wallpaper` and set the image as the wallpaper (gnome only).
 
-## Running automatically
+Requires `jq` to be installed to work.
 
-You can set Bing Wallpaper Updater to run automatically using Windows Task Scheduler or cron.  
-There are two files in this repo that will set it up to run every day at 6 a.m.:  
-On Windows run `task-scheduler.bat` as admin, or on Ubuntu run `cron.sh`
+Wallpapers are saved with a timestamp, so the previous day's wallpaper does not get overwritten. Wallpapers can also be automatically deleted after they reach a certain age.
