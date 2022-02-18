@@ -24,5 +24,5 @@ if [ ! -f "$FILENAME" ]; then
 fi
 
 if [ "$KEEP_FOR" -lt 0 ]; then
-    find "$WALLPAPER_LOCATION" -mtime "+$KEEP_FOR" -exec rm {} \;
+    find "$WALLPAPER_LOCATION/*" -mtime "+$KEEP_FOR" -exec rm {} \;
 fi
