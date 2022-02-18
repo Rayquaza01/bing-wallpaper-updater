@@ -23,6 +23,6 @@ if [ ! -f "$FILENAME" ]; then
     gsettings set org.gnome.desktop.background picture-uri "file://$FILENAME"
 fi
 
-if [ "$KEEP_FOR" -lt 0 ]; then
+if [ "$KEEP_FOR" -ge 0 ]; then
     find "$WALLPAPER_LOCATION/*" -mtime "+$KEEP_FOR" -exec rm {} \;
 fi
