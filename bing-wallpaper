@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # sets the wallpaper to the bing wallpaper of the day
 # requires curl and jq
 # works with gnome (gsettings) and kde (plasma-apply-wallpaperimage)
