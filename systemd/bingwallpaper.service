@@ -1,0 +1,6 @@
+[Unit]
+Description=Set your wallpaper to the Bing wallpaper of the day
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/bing-wallpaper
