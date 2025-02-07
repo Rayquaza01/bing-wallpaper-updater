@@ -4,6 +4,7 @@ After=network-online.target
 
 [Timer]
 OnCalendar=daily
+Persistent=true
 Unit=bingwallpaper.service
 
 [Install]
