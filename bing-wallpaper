@@ -24,7 +24,7 @@ KEEP_FOR=7
 mkdir -p "$WALLPAPER_LOCATION"
 
 # only download and set wallpaper if not already downloaded
-if [ ! -f "$FILENAME" ]; then
+if ! [ -f "$FILENAME" ]; then
     IMAGE_URL_BASE=$(curl "https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US" | jq -r ".images[0].url")
 
     curl "https://bing.com$IMAGE_URL_BASE" -o "$FILENAME"
