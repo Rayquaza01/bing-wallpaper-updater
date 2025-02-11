@@ -3,7 +3,7 @@ Description=Set your wallpaper to the Bing wallpaper of the day
 After=network-online.target
 
 [Timer]
-OnCalendar=daily
+OnCalendar=*-*-* 08:00:00 UTC
 Persistent=true
 Unit=bingwallpaper.service
 

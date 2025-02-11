@@ -19,10 +19,6 @@ if ! [ -d "$BING_WALLPAPER_LOCATION" ]; then
     mkdir -p "$BING_WALLPAPER_LOCATION"
 fi
 
-# Timestamp for file name
-TIMESTAMP=$(date +"%Y%m%d")
-# File location
-FILENAME="$BING_WALLPAPER_LOCATION/$TIMESTAMP.jpg"
 # Number of days to keep wallpapers. -1 to disable
 if [ -z "$BING_WALLPAPER_KEEP_FOR" ]; then
     BING_WALLPAPER_KEEP_FOR=7
@@ -30,9 +26,13 @@ fi
 
 mkdir -p "$BING_WALLPAPER_LOCATION"
 
+RESPONSE=$(curl "https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US")
+TIMESTAMP=$(echo "$RESPONSE" | jq -r ".images[0].startdate")
+FILENAME="$BING_WALLPAPER_LOCATION/$TIMESTAMP.jpg"
+
 # only download and set wallpaper if not already downloaded
 if ! [ -f "$FILENAME" ]; then
-    IMAGE_URL_BASE=$(curl "https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US" | jq -r ".images[0].url")
+    IMAGE_URL_BASE=$(echo "$RESPONSE" | jq -r ".images[0].url")
 
     curl "https://bing.com$IMAGE_URL_BASE" -o "$FILENAME"
 
